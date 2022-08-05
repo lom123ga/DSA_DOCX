@@ -94,3 +94,51 @@ Danh sách kề có tính hiệu quả về mặt lưu trữ vì chúng ta chỉ
 
 <img src = "https://vnoi.info/wiki/uploads/Depth-First-Search-Tree_img1.png">
 
+- Trong đồ thị có hướng, xét các cung được thăm và không được thăm bởi DFS, ta có 4 loại cung sau:
+
+    - Cung của cây DFS (Tree edge): là các cung thuộc cây DFS được định hướng theo chiều từ cha đến con. (ví dụ cạnh (u,v) thuộc cây DFS mà u được thăm trước v hay u là cha của v thì ta có cung u→v là cung của cây DFS). < Các cung của cây DFS được đánh dấu là các cạnh màu đen trong hình bên dưới >
+    - Cung xuôi (Forward edge): là các cung không thuộc cây DFS và có dạng u→v trong đó u là tổ tiên của v trong cây DFS. < Các cung xuôi được đánh dấu là các cạnh màu xanh lá trong hình bên dưới >
+    - Cung ngược (Back edge): là các cung không thuộc cây DFS và có dạng v→u trong đó u là tổ tiên của v trong cây DFS. < Các cung ngược được đánh dấu là các cạnh màu đỏ trong hình bên dưới >
+    - Cung chéo (Cross edge): là các cung không thuộc cây DFS có dạng u→v trong đó u và v thuộc hai nhánh khác nhau của cùng một cây DFS. < Các cung chéo được đánh dấu là các cạnh màu xanh dương trong hình bên dưới >
+
+![](https://vnoi.info/wiki/uploads/Depth-First-Search-Tree_img2.png)
+
+- Độ phức tạp của thuật toán 
+
+    - Độ phức tạp về thời gian của thuật toán DFS được biểu diễn dưới dạng O(V+E), trong đó V là số nút và E là số cạnh.
+    - Độ phức tạp về không gian của thuật toán là O(V).
+
+- Cài đặt thuật toán :
+    - Dùng stack :
+    
+            void DFS(int x){
+                visited[x] = true;
+                stack<int> st;
+                st.push(x);
+                while (st.size()){
+                    int u = st.top();   // lấy đỉnh
+                    st.pop();
+                    visited[u] = true;
+                    for (int v : a[u]){
+                        if (!visited[v]){
+                            st.push(v);
+                            trace[v] = u; // từ đỉnh u đi đến được đỉnh v
+                        }
+                    }
+                }
+            }
+
+    - Dùng đệ quy :
+
+            void DFS(int x){
+                // thăm đỉnh x
+                visited[x] = true;
+                for (int v : a[x]){
+                    if (!visited[v]){
+                        DFS[v];
+                    }
+                }
+            }
+
+3. Tìm kiếm theo chiều rộng (BFS) :
+
