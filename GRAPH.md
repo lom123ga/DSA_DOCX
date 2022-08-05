@@ -77,14 +77,14 @@ Danh sách kề có tính hiệu quả về mặt lưu trữ vì chúng ta chỉ
 
 ### 4\. Các thuật toán trên đồ thị : 
 
-1. Khái niệm :
+#### 1. Khái niệm :
 
  - Một **đường đi P** độ dài k từ đỉnh $v_0$ tới đỉnh $v_k$ là tập đỉnh { $v_0$, $v_1$, $v_2$,..., $v_k$} sao cho ( $v_{i−1}$ , $v_i$ )∈E,∀i:1≤i≤k. Khi đó ta nói đường đi này bao gồm các đỉnh \{ $v_0$, $v_1$, $v_2$,..., $v_k$\} và các cạnh \{( $v_0$, $v_1$), ( $v_1$, $v_2$), ..., ( $v_{k - 1}$, $v_k$)\}; và $v_0$ đến được $v_k$ thông qua đường đi P. <br>
  - Đường đi được gọi là **đường đi đơn giản (simple path)** nếu tất cả các đỉnh trên đường đi đó đều phân biệt. Đường đi được gọi là **đường đi đơn** nếu như không có cạnh nào trên đường đi đó đi qua hơn một lần. <br>
 - Một **đường đi con (subpath)** P' của P là một đoạn liên tục các đỉnh và cạnh dọc theo đường đi P.<br>
 - Đường đi P gọi là **chu trình (circuit)** nếu như $v_0$= $v_k$​. Chu trình P gọi là **chu trình đơn giản (simple circuit)* nếu như \{ $v_1$, $v_2$,..., $v_k$\} đôi một khác nhau. Chu trình mà trong đó không có cạnh nào đi qua hơn một lần được gọi là **chu trình đơn**. <br>
 
-2. Tìm kiếm theo chiều sâu (DFS) :
+#### 2. Tìm kiếm theo chiều sâu (DFS) :
 
 - Trong quá trình *DFS*, với mỗi đỉnh u ta có đỉnh ***par[u]*** là số hiệu của đỉnh mà từ đỉnh đó thủ tục DFS gọi đệ quy đến u. Xây dựng đồ thị con với các cạnh là (par[u],u) ta có được một cây. Cây này được gọi là **cây DFS**.
 
@@ -110,7 +110,7 @@ Danh sách kề có tính hiệu quả về mặt lưu trữ vì chúng ta chỉ
 
 - Cài đặt thuật toán :
     - Dùng stack :
-    
+    ```c++
             void DFS(int x){
                 visited[x] = true;
                 stack<int> st;
@@ -127,9 +127,9 @@ Danh sách kề có tính hiệu quả về mặt lưu trữ vì chúng ta chỉ
                     }
                 }
             }
-
+    ```
     - Dùng đệ quy :
-
+    ```c++
             void DFS(int x){
                 // thăm đỉnh x
                 visited[x] = true;
@@ -139,6 +139,221 @@ Danh sách kề có tính hiệu quả về mặt lưu trữ vì chúng ta chỉ
                     }
                 }
             }
+    ```
 
-3. Tìm kiếm theo chiều rộng (BFS) :
+#### 3. Tìm kiếm theo chiều rộng (BFS) :
 
+- Thuật toán duyệt đồ thị ưu tiên chiều rộng (Breadth-first search - BFS) là một trong những thuật toán tìm kiếm cơ bản và thiết yếu trên đồ thị. Mà trong đó, những đỉnh nào gần đỉnh xuất phát hơn sẽ được duyệt trước.
+
+- Ứng dụng của BFS có thể giúp ta giải quyết tốt một số bài toán trong thời gian và không gian tối thiểu. Đặc biệt là bài toán tìm kiếm đường đi ngắn nhất từ một đỉnh gốc tới tất cả các đỉnh khác. Trong đồ thị không có trọng số hoặc tất cả trọng số bằng nhau, thuật toán sẽ luôn trả ra đường đi ngắn nhất có thể. Ngoài ra, thuật toán này còn được dùng để tìm các thành phần liên thông của đồ thị, hoặc kiểm tra đồ thị hai phía, …
+
+![](https://vnoi.info/wiki/uploads/breadth-first-search_img1.png)
+
+##### Ý tưởng
+--- <br>
+
+- Với đồ thị không trọng số và đỉnh nguồn s. Đồ thị này có thể là đồ thị có hướng hoặc vô hướng, điều đó không quan trọng đối với thuật toán.
+
+-   Có thể hiểu thuật toán như một ngọn lửa lan rộng trên đồ thị:
+
+    - Ở bước thứ 0, chỉ có đỉnh nguồn s đang cháy.
+    - Ở mỗi bước tiếp theo, ngọn lửa đang cháy ở mỗi đỉnh lại lan sang tất cả các đỉnh kề với nó.
+
+- Trong mỗi lần lặp của thuật toán, "vòng lửa" lại lan rộng ra theo chiều rộng. Những đỉnh nào gần s hơn sẽ bùng cháy trước.
+
+![](https://vnoi.info/wiki/uploads/breadth-first-search_img2.png)
+
+#### Thuật toán loang : 
+
+- **Thuật toán loang (thuật toán vết dầu loang)** là một kĩ thuật sử dụng BFS để tìm tất cả các điểm có thể đi tới. Điểm khác biệt giữa **Loang** so với đa số những bài **BFS** là ta không phải tìm chi phí nhỏ nhất.
+
+- Gọi là thuật toán loang vì nguyên lí của thuật toán này rất giống với hiện tượng loang của chất lỏng. Khi ta nhỏ dầu xuống một mặt phẳng, vết dầu có thể loang ra những khu vực xung quanh. Tương tự, thuật toán loang trên ma trận cũng vậy, ta sẽ duyệt một ô trên ma trận và sau đó duyệt các điểm xung quanh nó và loang dần ra để giải quyết bài toán.
+
+#### Cài đặt BFS bằng queue 
+---
+```c++
+        int n; // Số lượng đỉnh của đồ thị
+        int d[maxN], par[maxN];
+        bool visit[maxN];
+        vector <int> g[maxN];
+
+        void bfs(int s) { // Với s là đỉnh xuất phát (đỉnh nguồn)
+            fill_n(d, n + 1, 0);
+            fill_n(par, n + 1, -1);
+            fill_n(visit, n + 1, false);
+
+            queue <int> q;
+            q.push(s);
+            visit[s] = true;
+            while (!q.empty()) {
+                int u = q.front();
+                q.pop();
+                for (auto v : g[u]) {
+                    if (!visit[v]) {
+                        d[v]     = d[u] + 1;
+                        par[v]   = u;
+                        visit[v] = true;
+                        q.push(v);
+                    }
+                }
+            }
+        }
+```
+
+#### Độ phức tạp thời gian
+
+- độ phức tạp thời gian của thuật toán này là O(|V|+|E|) với **danh sách kề**.
+
+- thuật toán sẽ mất độ phức tạp O( $|V|^2$ ) với **ma trận kề**.
+
+### Tính liên thông của đồ thị 
+---
+
+- Đồ thị vô hướng được coi là liên thông nếu luôn tìm được đường đi giữa hai đỉnh bất 
+kỳ của nó.
+
+- Trong trường hợp đồ thị G không liên thông, ta có thể phân ra G thành một số đồ thị
+con liên thông mà chúng đôi một không có đỉnh chung. Mỗi đồ thị con như vậy là một 
+thành phần liên thông của G. Như vậy, đồ thị liên thông khi và chỉ khi số thành phần 
+liên thông của nó là 1.
+
+- Đối với đồ thị vô hướng, đường đi từ đỉnh u đến đỉnh v cũng giống như đỉnh đường đi từ đỉnh v đến đỉnh u. Chính vì vậy, nếu tồn tại u sao cho u có đường đi đến tất cả các đỉnh còn lại của đồ thị thì ta kết luận được đồ thị là liên thông.
+
+- **Đỉnh khớp** (cut vertex/ articulation point): của một đồ thị vô hướng là đỉnh mà nếu xóa đỉnh này khỏi đồ thị và các cạnh nối đến nó thì số thành phần liên thông của đồ thị sẽ tăng thêm.
+
+- **Cạnh cầu** (bridge): của một đồ thị vô hướng là cạnh mà nếu xóa đi khỏi đồ thị thì số thành phần liên thông của đồ thị sẽ tăng thêm. <br>
+![](https://upload.wikimedia.org/wikipedia/commons/9/99/DTSongLThong1.png)
+
+- **Liên thông mạnh (strongly connected)**: Đồ thị có hướng gọi là liên thông mạnh nếu có đường đi từ a tới b và từ b tới a với mọi cặp đỉnh a và b của đồ thị.
+
+- **Liên thông yếu (weakly connected)**: Đồ thị có hướng gọi là liên thông yếu nếu có đường đi giữa 2 đỉnh bất kỳ của đồ thị vô hướng tương ứng với đồ thị đã cho. Tức là hủy bỏ các hướng của các cạnh trong đồ thị.<br>
+![](https://upload.wikimedia.org/wikipedia/commons/0/0e/DTLThongCH1.png)
+
+#### Đếm thành phần liên thông bằng BFS
+
+- Trong phép duyệt đồ thị, số thành phần liên thông của nó bằng số lần gọi tới thủ tục BFS.
+
+![](https://vnoi.info/wiki/uploads/breadth-first-search_gif2.gif)
+
+```c++
+            const int maxN  = 1e5 + 7;
+
+            int n, m, components = 0;
+            bool visit[maxN];
+            vector <int> g[maxN];
+
+            void bfs(int s) {
+                ++components;
+                queue <int> q;
+                q.push(s);
+                visit[s] = true;
+                while (!q.empty()) {
+                    int u = q.front();
+                    q.pop();
+                    for (auto v : g[u]) {
+                        if (!visit[v]) {
+                            visit[v] = true;
+                            q.push(v);
+                        }
+                    }
+                }
+            }
+
+            int main() {
+                cin >> n >> m;
+                while (m--) {
+                    int u, v;
+                    cin >> u >> v;
+                    g[u].push_back(v);
+                    g[v].push_back(u);
+                }
+
+                fill_n(visit, n + 1, false);
+                for (int i = 1; i <= n; ++i)
+                    if (!visit[i]) bfs(i);
+                cout << components;
+            }
+```
+
+
+###  BÀI TẬP CF :
+
+> H\. [ProPTIT-Algorithm-Graph] DFS trên đồ thị vô hướng
+
+```c++
+        int visited[1005];
+        vector<int> a[1005];
+        
+        
+        void DFS(int u){
+            cout << u << " ";
+            visited[u] = 1;
+            for (int v : a[u]){
+                if (!visited[v]){
+                    DFS(v);
+                }
+            }
+        }
+        
+        
+        void solve(){
+            int V,E,st;
+            cin >> V >> E >> st;
+            for (int i=0;i<1005;i++) a[i].clear();
+            memset(visited,0,sizeof(visited));
+            for (int i=0;i<E;i++){
+                int u,v;
+                cin >> u >> v;
+                a[u].push_back(v);
+                a[v].push_back(u);
+            }
+            for (int i=1;i<=V;i++){
+                if (a[i].size()) sort(all(a[i]));
+            }
+            DFS(st);
+            cout << endl;
+        }
+```
+
+> I\. [ProPTIT-Algorithm-Graph] BFS trên đồ thị có hướng
+
+```c++
+            int visited[1005];
+            vector<int> a[1005];
+            
+            
+            void BFS(int x){
+                queue<int> q;
+                q.push(x);
+                visited[x] = 1;
+                while (q.size()){
+                    int u = q.front();
+                    q.pop();
+                    cout << u << " ";
+                    for (int v : a[u]){
+                        if (!visited[v]) {
+                            q.push(v);
+                            visited[v] = 1;
+                        }
+                    }
+                }
+            }
+            
+            
+            void solve(){
+                int V,E,st;
+                cin >> V >> E >> st;
+                for (int i=0;i<1005;i++) a[i].clear();
+                memset(visited,0,sizeof(visited));
+                for (int i=0;i<E;i++){
+                    int u,v;
+                    cin >> u >> v;
+                    a[u].push_back(v);
+                }
+                for (int i=1;i<=V;i++){
+                    if (a[i].size()) sort(all(a[i]));
+                }
+                BFS(st);
+                cout << endl;
+            }
+```
