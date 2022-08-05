@@ -1,4 +1,4 @@
-# Cấu trúc dữ liệu đồ thị (Graph)
+[# Cấu trúc dữ liệu đồ thị (Graph)
 
 
 ## 1\. Khái niệm <br>
@@ -86,3 +86,4 @@ Danh sách kề có tính hiệu quả về mặt lưu trữ vì chúng ta chỉ
 
 2. Tìm kiếm theo chiều sâu (DFS) :
 
+](https://www.ideone.com/IwA5rc)
