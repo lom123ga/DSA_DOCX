@@ -79,10 +79,10 @@ Danh sách kề có tính hiệu quả về mặt lưu trữ vì chúng ta chỉ
 
 1. Khái niệm :
 
- - Một **đường đi P** độ dài k từ đỉnh $v_0$ tới đỉnh $v_k$ là tập đỉnh {$v_0$, $v_1$, $v_2$,..., $v_k$} sao cho ($v_{i−1}$,$v_i$)∈E,∀i:1≤i≤k. Khi đó ta nói đường đi này bao gồm các đỉnh \{$v_0$, $v_1$, $v_2$,..., $v_k$\} và các cạnh \{($v_0$, $v_1$), ($v_1$, $v_2$), ..., ($v_{k - 1}$, $v_k$)\}; và $v_0$ đến được $v_k$ thông qua đường đi P. <br>
+ - Một **đường đi P** độ dài k từ đỉnh $v_0$ tới đỉnh $v_k$ là tập đỉnh { $v_0$, $v_1$, $v_2$,..., $v_k$} sao cho ( $v_{i−1}$ , $v_i$ )∈E,∀i:1≤i≤k. Khi đó ta nói đường đi này bao gồm các đỉnh \{ $v_0$, $v_1$, $v_2$,..., $v_k$\} và các cạnh \{( $v_0$, $v_1$), ( $v_1$, $v_2$), ..., ( $v_{k - 1}$, $v_k$)\}; và $v_0$ đến được $v_k$ thông qua đường đi P. <br>
  - Đường đi được gọi là **đường đi đơn giản (simple path)** nếu tất cả các đỉnh trên đường đi đó đều phân biệt. Đường đi được gọi là **đường đi đơn** nếu như không có cạnh nào trên đường đi đó đi qua hơn một lần. <br>
 - Một **đường đi con (subpath)** P' của P là một đoạn liên tục các đỉnh và cạnh dọc theo đường đi P.<br>
-- Đường đi P gọi là **chu trình (circuit)** nếu như $v_0$= $v_k$​. Chu trình P gọi là **chu trình đơn giản (simple circuit)* nếu như \{$v_1$, $v_2$,..., $v_k$\} đôi một khác nhau. Chu trình mà trong đó không có cạnh nào đi qua hơn một lần được gọi là **chu trình đơn**. <br>
+- Đường đi P gọi là **chu trình (circuit)** nếu như $v_0$= $v_k$​. Chu trình P gọi là **chu trình đơn giản (simple circuit)* nếu như \{ $v_1$, $v_2$,..., $v_k$\} đôi một khác nhau. Chu trình mà trong đó không có cạnh nào đi qua hơn một lần được gọi là **chu trình đơn**. <br>
 
 2. Tìm kiếm theo chiều sâu (DFS) :
 
