@@ -1,4 +1,4 @@
-[# Cấu trúc dữ liệu đồ thị (Graph)
+# Cấu trúc dữ liệu đồ thị (Graph)
 
 
 ## 1\. Khái niệm <br>
@@ -86,4 +86,11 @@ Danh sách kề có tính hiệu quả về mặt lưu trữ vì chúng ta chỉ
 
 2. Tìm kiếm theo chiều sâu (DFS) :
 
-](https://www.ideone.com/IwA5rc)
+- Trong quá trình *DFS*, với mỗi đỉnh u ta có đỉnh ***par[u]*** là số hiệu của đỉnh mà từ đỉnh đó thủ tục DFS gọi đệ quy đến u. Xây dựng đồ thị con với các cạnh là (par[u],u) ta có được một cây. Cây này được gọi là **cây DFS**.
+
+- Các cạnh thuộc cây DFS được gọi là các “*cạnh nét liền*”.
+
+- Các cạnh còn lại không thuộc cây DFS được gọi là các “*cạnh nét đứt*".
+
+<img src = "https://vnoi.info/wiki/uploads/Depth-First-Search-Tree_img1.png">
+
