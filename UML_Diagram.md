@@ -72,6 +72,29 @@ Ta tìm hiểu sâu về  Composition, Agregation và Cardinality.
 
 ![](https://cdn-images.visual-paradigm.com/guide/uml/uml-class-diagram-tutorial/13-composition.png)
 
+> Dependency
+
+Một đối tượng của một lớp có thể sử dụng một đối tượng của một lớp khác trong mã của một phương thức. Nếu đối tượng không được lưu trữ trong bất kỳ trường nào, thì điều này được mô hình hóa như một mối quan hệ phụ thuộc.
+
+- Tồn tại giữa hai lớp nếu những thay đổi đối với định nghĩa của một lớp có thể gây ra thay đổi cho lớp kia (nhưng không phải ngược lại).
+
+Hình dưới đây cho thấy một ví dụ về sự phụ thuộc. Mối quan hệ được hiển thị dưới dạng đường đứt nét với mũi tên mở.
+
+![](https://cdn-images.visual-paradigm.com/guide/uml/uml-class-diagram-tutorial/14-dependency.png)
+
+Hình dưới đây cho thấy một ví dụ khác về sự phụ thuộc. Lớp Person có thể có phương thức hasRead với tham số Book trả về true nếu người đó đã đọc sách (có lẽ bằng cách kiểm tra một số cơ sở dữ liệu).
+
+![](https://cdn-images.visual-paradigm.com/guide/uml/uml-class-diagram-tutorial/15-dependency-example.png)
+
+> Realization
+
+Hiện thực hóa là mối quan hệ giữa lớp blueprint và đối tượng chứa các chi tiết cấp độ triển khai tương ứng của nó. Đối tượng này được cho là hiện thực hóa lớp bản thiết kế. Nói cách khác, bạn có thể hiểu đây là mối quan hệ giữa giao diện và lớp triển khai.
+
+Ví dụ: giao diện Chủ sở hữu có thể chỉ định các phương pháp để có được tài sản và xử lý tài sản. Các lớp Person và Corporation cần thực hiện các phương pháp này, có thể theo những cách rất khác nhau.
+
+![](https://cdn-images.visual-paradigm.com/guide/uml/uml-class-diagram-tutorial/16-realization.png)
+
+
 > Cardinality
 
 Cardinality được thể hiện dưới dạng :
