@@ -7,15 +7,22 @@ ios_base::sync_with_stdio(false); cin.tie(NULL);
 # 2. Số ước của n
 
 - Giả sử n =
-$ a^i.b^j.c^z....$
+
+$ a^i.b^j.c^z.... $
+
 thì số ước của n là
+
 $ (i+1)(j+1)(z+1)... $
 
 # 3. Tổng các ước của n
 - Giả sử n =
+
 $ a^i . b^j . c^z....$
+
 thì tổng các ước của n là
+
 $ \frac{a^{i+1}-1}{a-1}.\frac{b^{j+1}-1}{b-1}.\frac{c^{z+1}-1}{c-1}... $
+
 # 4. Dãy số Catalan
 
 - Công thức: 
